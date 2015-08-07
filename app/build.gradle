@@ -1,0 +1,40 @@
+apply plugin: 'com.android.application'
+// vedi https://github.com/frogermcs/GithubClient/blob/1bf53a2a36c8a85435e877847b987395e482ab4a/app/build.gradle
+apply plugin: 'com.neenbedankt.android-apt'
+//apply plugin: "com.ewerk.gradle.plugins.dagger"
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "21.1.2"
+
+    defaultConfig {
+        applicationId "com.mcenere.provadagger"
+        minSdkVersion 19
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    apt 'com.google.dagger:dagger-compiler:2.0.1'
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:22.0.0'
+    compile 'com.google.dagger:dagger:2.0.1'
+    provided 'org.glassfish:javax.annotation:10.0-b28'
+
+//    compile 'javax.inject:javax.inject:1'
+//    compile 'javax.annotation:javax.annotation-api:1.2'
+
+//    //Dagger 2
+//    compile 'com.google.dagger:dagger:2.0.1'
+//    apt 'com.google.dagger:dagger-compiler:2.0.1'
+//    provided 'org.glassfish:javax.annotation:10.0-b28'
+
+}
